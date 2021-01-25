@@ -1,6 +1,6 @@
 import "./App.less";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Layout, Menu, PageHeader } from "antd";
+import { Layout, Menu, PageHeader, Avatar } from "antd";
 import logo from "./logo.png";
 import GraduateHomePage from "./pages/graduate-home-page";
 import GraduateAddPage from "./pages/graduate-add-page";
@@ -65,7 +65,7 @@ const App = () => {
 };
 
 const NavBar = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   return (
     <>
       <Header>
@@ -89,6 +89,9 @@ const NavBar = () => {
                   Graduates Page
                 </Link>
               </Menu.Item>
+              <Menu.Item><span>{user.name}</span></Menu.Item>
+              <Avatar src={user.picture} />
+
               <Menu.Item>
                 <LogoutButton />
               </Menu.Item>
