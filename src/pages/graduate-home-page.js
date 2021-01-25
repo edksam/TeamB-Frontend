@@ -12,7 +12,9 @@ const GraduateHomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://teamb-grads.herokuapp.com/graduates");
+        const response = await axios.get(
+          "https://teamb-grads.herokuapp.com/graduates",
+        );
         dispatch({
           type: "FETCH_GRADUATES",
           payload: response.data.data || response.data, //in case pagination is disabled
@@ -25,7 +27,7 @@ const GraduateHomePage = () => {
   }, [dispatch]);
   console.log(state);
   return (
-    <div style={{ padding: "0 40px" }}>
+    <div style={{ padding: "0 30px" }} className="site-layout">
       <Col>
         <GraduateSearch />
         {state.message.content && <FlashMessage message={state.message} />}
